@@ -6,24 +6,19 @@ namespace Snake
     {
         public static void Main(string[] args)
         {
-            var x1 = 1;
-            var y1 = 2;
-            var z1 = '*';
+            var p1 = new Point();
+            p1.x = 1;
+            p1.y = 2;
+            p1.symbol = '*';
+            p1.Draw();
 
-            var x2 = 3;
-            var y2 = 4;
-            var z2 = '#';
-
-            Draw(x1, y1, z1);
-            Draw(x2, y2, z2);
-
+            var p2 = new Point();
+            p2.x = 3;
+            p2.y = 4;
+            p2.symbol = '#';
+            p2.Draw();
+            
             Console.ReadLine();
-        }
-
-        public static void Draw(int x, int y, char z)
-        {
-            Console.SetCursorPosition(x, y);
-            Console.WriteLine(z);
         }
     }
 }
