@@ -6,14 +6,18 @@ namespace Snake
     {
         public static void Main(string[] args)
         {
-            var line1 = new HorizontalLine(1, 5, 3, '*');
-            line1.DrawLine();
+            //рамка
+            var lineTop = new HorizontalLine(0, 80, 0, '*');
+            lineTop.DrawFigure();
 
-            var line2 = new HorizontalLine(4, 7, 5, '+');
-            line2.DrawLine();
+            var lineLeft = new VerticalLine(0, 0, 24, '*');
+            lineLeft.DrawFigure();
 
-            var line3 = new VerticalLine(8, 7, 10, '-');
-            line3.DrawLine();
+            var lineBottom = new HorizontalLine(0, 80, 24, '*');
+            lineBottom.DrawFigure();
+
+            var lineRight = new VerticalLine(79, 0, 24, '*');
+            lineRight.DrawFigure();
 
             Console.ReadLine();
         }
