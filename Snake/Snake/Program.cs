@@ -19,6 +19,11 @@ namespace Snake
             var lineRight = new VerticalLine(79, 0, 24, '*');
             lineRight.DrawFigure();
 
+            // змейка
+            var startPoint = new Point(1, 1, '@');
+            Snake snake = new Snake(startPoint, 10, Direction.Right);
+            snake.DrawFigure();
+
             Console.ReadLine();
         }
     }
