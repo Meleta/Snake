@@ -8,7 +8,7 @@ namespace Snake
 
         private int y;
 
-        private char symbol;
+        public char symbol;
 
         public Point(int _x, int _y, char _symbol)
         {
@@ -54,6 +54,11 @@ namespace Snake
         {
             Console.SetCursorPosition(x, y);
             Console.WriteLine(' ');
+        }
+
+        public bool IsEqual(Point check)
+        {
+            return check.x == this.x && check.y == this.y;
         }
     }
 }

@@ -8,11 +8,11 @@ namespace Snake
     {
         private Direction _direction;
 
-        public Snake(Point tail, int lenght, Direction direction)
+        public Snake(Point tail, int length, Direction direction)
         {
             _direction = direction;
             _line = new List<Point>();
-            for (int i = 0; i < lenght; i++)
+            for (int i = 0; i < length; i++)
             {
                 Point p = new Point(tail);
                 p.Move(i, _direction);
@@ -60,6 +60,19 @@ namespace Snake
             Point nextPoint = new Point(head);
             nextPoint.Move(1, _direction);
             return nextPoint;
+        }
+
+        public bool Eat(Point food)
+        {
+            Point head = GetNextPoint();
+            if (head.IsEqual(food))
+            {
+                food.symbol = head.symbol;
+                _line.Add(food);
+                return true;
+            }
+
+            return false;
         }
     }
 }

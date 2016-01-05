@@ -7,7 +7,7 @@ namespace Snake
     {
         public static void Main(string[] args)
         {
-            //рамка
+            //рамка 80 X 25
             var lineTop = new HorizontalLine(0, 80, 0, '*');
             lineTop.DrawFigure();
 
@@ -20,21 +20,35 @@ namespace Snake
             var lineRight = new VerticalLine(79, 0, 24, '*');
             lineRight.DrawFigure();
 
+            //еда (на старте)
+            Food createFood = new Food(80, 25, '$');
+            Point food = createFood.CreateMeal();
+            food.Draw();
+
             // змейка
-            var startPoint = new Point(1, 1, '@');
-            Snake snake = new Snake(startPoint, 10, Direction.Right);
+            var startSnakePoint = new Point(1, 1, '@');
+            Snake snake = new Snake(startSnakePoint, 10, Direction.Right); // длина змейки десять маг.число
             snake.DrawFigure();
 
             while (true)
             {
+                if (snake.Eat(food))
+                {
+                    food = createFood.CreateMeal();
+                    food.Draw();
+                }
+                else
+                {
+                    snake.SnakeMove();
+                }
+
+                Thread.Sleep(100);
+
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey();
                     snake.SnakeDirection(key.Key);
                 }
-
-                Thread.Sleep(100);
-                snake.SnakeMove();
             }
 
             // ReSharper disable once FunctionNeverReturns
