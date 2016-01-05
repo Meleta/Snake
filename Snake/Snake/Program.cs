@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace Snake
 {
@@ -24,7 +25,19 @@ namespace Snake
             Snake snake = new Snake(startPoint, 10, Direction.Right);
             snake.DrawFigure();
 
-            Console.ReadLine();
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    snake.SnakeDirection(key.Key);
+                }
+
+                Thread.Sleep(100);
+                snake.SnakeMove();
+            }
+
+            // ReSharper disable once FunctionNeverReturns
         }
     }
 }

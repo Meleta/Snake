@@ -34,11 +34,11 @@ namespace Snake
             {
                 x = x - offset;
             }
-            if (direction == Direction.Top)
+            if (direction == Direction.Up)
             {
                 y = y - offset;
             }
-            if (direction == Direction.Bottom)
+            if (direction == Direction.Down)
             {
                 y = y + offset;
             }
@@ -48,6 +48,12 @@ namespace Snake
         {
             Console.SetCursorPosition(x, y);
             Console.WriteLine(symbol);
+        }
+
+        public void Clear()
+        {
+            Console.SetCursorPosition(x, y);
+            Console.WriteLine(' ');
         }
     }
 }
