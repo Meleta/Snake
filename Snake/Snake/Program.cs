@@ -7,18 +7,20 @@ namespace Snake
     {
         public static void Main(string[] args)
         {
+            Wall frame = new Wall(80, 25);
+            frame.DrawWalls();
             //рамка 80 X 25
-            var lineTop = new HorizontalLine(0, 80, 0, '*');
-            lineTop.DrawFigure();
+            //var lineTop = new HorizontalLine(0, 80, 0, '*');
+            //lineTop.DrawFigure();
 
-            var lineLeft = new VerticalLine(0, 0, 24, '*');
-            lineLeft.DrawFigure();
+            //var lineLeft = new VerticalLine(0, 0, 24, '*');
+            //lineLeft.DrawFigure();
 
-            var lineBottom = new HorizontalLine(0, 80, 24, '*');
-            lineBottom.DrawFigure();
+            //var lineBottom = new HorizontalLine(0, 80, 24, '*');
+            //lineBottom.DrawFigure();
 
-            var lineRight = new VerticalLine(79, 0, 24, '*');
-            lineRight.DrawFigure();
+            //var lineRight = new VerticalLine(79, 0, 24, '*');
+            //lineRight.DrawFigure();
 
             //еда (на старте)
             Food createFood = new Food(80, 25, '$');
@@ -32,6 +34,11 @@ namespace Snake
 
             while (true)
             {
+                if (frame.IsHit(snake) || snake.IsTail())
+                {
+                    break;
+                }
+
                 if (snake.Eat(food))
                 {
                     food = createFood.CreateMeal();

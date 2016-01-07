@@ -74,5 +74,20 @@ namespace Snake
 
             return false;
         }
+
+        public bool IsTail()
+        {
+            var head = _line.Last();
+
+            for (var i = 0; i < _line.Count - 2; i++)
+            {
+                if (head.IsEqual(_line[i]))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 }

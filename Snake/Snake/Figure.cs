@@ -4,7 +4,7 @@ namespace Snake
 {
     public class Figure
     {
-        protected static List<Point> _line;
+        protected List<Point> _line;
 
         public void DrawFigure()
         {
@@ -12,6 +12,32 @@ namespace Snake
             {
                 point.Draw();
             }
+        }
+
+        public bool IsHitFigure(Figure figure)
+        {
+            foreach (var point in _line)
+            {
+                if (figure.IsHitFigure(point))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public bool IsHitFigure(Point point)
+        {
+            foreach (var p in _line)
+            {
+                if (p.IsEqual(point))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
